@@ -33,6 +33,22 @@
     text-decoration: none;
 }
 
+.logout {
+    /* Com 2 valores, segue o padrão de [CIMA BAIXO] e [ESQUERDA E DIREITA] */
+    padding: .4em .9em;
+    margin: 0px 0px 0px 150px;
+    text-decoration: none;
+    transition: 0.75s;
+    font-size: 16px;
+    font-family: "Monteserrat", sans-serif;
+}
+
+.logout:hover {
+    background-color: red;
+    border-radius: 5px;
+    color: #ffffff
+}
+
 .active {
     background-color: #000;
     border-radius: .35em;

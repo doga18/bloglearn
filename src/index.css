@@ -130,15 +130,18 @@ button[disabled] {
   background-color: #f8d7da;
   border: 1px solid #f6c6cb;
   padding: 5px;
+  margin: 14px 5px 14px 5px;
   border-radius: 5px;
 }
 
 .container .messages {
-  color: rgb(246, 252, 246);
-  margin: 20px 100vh;
+  align-items: center;
+  text-align: center;
+  color: rgb(246, 252, 246);  
   background-color: #53753d;
   border: 1px solid #7bdb93;
   padding: 5px;
+  margin: 14px 5px 14px 5px;
   border-radius: 5px;
 }
 

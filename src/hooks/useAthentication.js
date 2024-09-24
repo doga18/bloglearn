@@ -5,7 +5,7 @@ import { db } from "../firebase/config";
 import {
     getAuth,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassowrd,
+    signInWithEmailAndPassword,
     updateProfile,
     signOut
 } from 'firebase/auth'
@@ -63,12 +63,45 @@ export const useAuthentication = () => {
         setLoading(false)
     }
 
+    const LoginUser = async (data) => {
+        setLoading("Carregando...")
+        checkIfIsCancelled()
+
+        setLoading(true)
+        setError(null)
+
+        // Tentando autenticar o usuários.
+        try{
+            setLoading(`Logando ${data.email}`)
+            const {user} = await signInWithEmailAndPassword(
+                auth,
+                data.email,
+                data.password
+            )
+            return user;
+        }catch(e){
+            if(e.message.includes('auth/invalid-credential')){
+                setError("Não foi possível realizar o Login, verifique seu e-mail e senha e tente novamente.")
+            }else{
+                setError("Erro Geral")
+            }
+            console.log(e)
+        }
+    }
+
+    // logout
+
+    const logout = () => {
+        checkIfIsCancelled();
+        signOut(auth);
+    }
+
     //
     useEffect(() => {
         return () => setCancelled(true);
     }, []);
 
     return {
-        auth, createUser, error, loading
+        auth, createUser, error, loading, logout, LoginUser
     }
 }
